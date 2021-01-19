@@ -1,3 +1,3 @@
 # Stallite-image-Viewer-and-downloads
 
-Deep learning model ( ANN) for classifcation of satellite image. The image here is taken from Landsat (kathmandu district)
+User can view sentinel images and download of any area in any interval of time. The website is hosted here http://anup39.pythonwhere.com/
