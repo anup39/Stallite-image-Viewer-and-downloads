@@ -1,0 +1,437 @@
+{% load leaflet_tags %}
+
+<head>
+
+    {% leaflet_js %}
+    {% leaflet_css %}
+</head>
+<style>
+    body{
+        margin:0;
+        background-color: #51bcda;
+    }
+    .leaflet-container
+    {  
+        width: 100%;
+        height: 100%;
+        
+       
+        
+    }
+    #form{
+        background-color: #51bcda;
+          width: 100%;
+      
+      
+      
+    }
+.button1 {
+         background-color:green;
+         text-align: center;
+         cursor:pointer;
+         display: inline-block;
+        color: white;
+} 
+  .button {
+  background-color:green; /* Green */
+  border: 2px solid #4CAF50;
+  color: white;
+  padding: 7px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor:pointer
+}
+
+.button:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+  
+    
+
+
+</style>
+
+
+<body>
+   
+    <div id="form">
+    <form action="" method="post" enctype=multipart/form-data>
+    {% csrf_token %}
+   
+    <p style="color:black; display: block;  background-color:#51bcda;  border: 2px solid powderblue; font-size:19;">{{form }}
+    <button type="submit" class="button1">Search Image</button>
+    </p>
+    {% comment %} <button type="submit" class="button1">Search Image</button> {% endcomment %}
+    <h3 style="color:white text-align:left">Click below to Dowload images for your search :{{date}} </h3>
+   </form>
+   
+    {% comment %} https://services.sentinel-hub.com/ogc/wms/fb1d3613-b14b-476d-91f3-b8fcfcadef19?REQUEST=GetMap&CRS=CRS:84&BBOX=35.351833,32.378106,35.623654,32.577368&LAYERS=1_TRUE_COLOR&WIDTH=512&HEIGHT=343&FORMAT=image/jpeg&TIME=2020-11-11/2020-12-11 {% endcomment %}
+    <a href="https://services.sentinel-hub.com/ogc/wms/fb1d3613-b14b-476d-91f3-b8fcfcadef19?REQUEST=GetMap&CRS=CRS:84&BBOX=35.351833,32.378106,35.623654,32.577368&LAYERS=1_TRUE_COLOR&WIDTH=512&HEIGHT=343&FORMAT=image/jpeg&TIME={{date}}"  download="image.jpeg" target="_blank" > 
+         <button type="button" class="button" >True Color</button> 
+    </a> 
+    <a href="https://services.sentinel-hub.com/ogc/wms/fb1d3613-b14b-476d-91f3-b8fcfcadef19?REQUEST=GetMap&CRS=CRS:84&BBOX=35.351833,32.378106,35.623654,32.577368&LAYERS=NDVI&WIDTH=512&HEIGHT=343&FORMAT=image/jpeg&TIME={{date}}"  download="image.jpeg" target="_blank" > 
+         <button type="button" class="button">NDVI</button> 
+    </a> 
+    <a href="https://services.sentinel-hub.com/ogc/wms/fb1d3613-b14b-476d-91f3-b8fcfcadef19?REQUEST=GetMap&CRS=CRS:84&BBOX=35.351833,32.378106,35.623654,32.577368&LAYERS=2_FALSE_COLOR&WIDTH=512&HEIGHT=343&FORMAT=image/jpeg&TIME={{date}}"  download="image.jpeg" target="_blank" > 
+         <button type="button" class="button" >Infared</button> 
+    </a> 
+    <a href="https://services.sentinel-hub.com/ogc/wms/fb1d3613-b14b-476d-91f3-b8fcfcadef19?REQUEST=GetMap&CRS=CRS:84&BBOX=35.351833,32.378106,35.623654,32.577368&LAYERS=B01&WIDTH=512&HEIGHT=343&FORMAT=image/jpeg&TIME={{date}}"  download="image.jpeg" target="_blank" > 
+         <button type="button" class="button">Band 1</button> 
+    </a> 
+    <a href="https://services.sentinel-hub.com/ogc/wms/fb1d3613-b14b-476d-91f3-b8fcfcadef19?REQUEST=GetMap&CRS=CRS:84&BBOX=35.351833,32.378106,35.623654,32.577368&LAYERS=B02&WIDTH=512&HEIGHT=343&FORMAT=image/jpeg&TIME={{date}}"  download="image.jpeg" target="_blank" > 
+         <button type="button" class="button" >Band 2</button> 
+    </a> 
+    <a href="https://services.sentinel-hub.com/ogc/wms/fb1d3613-b14b-476d-91f3-b8fcfcadef19?REQUEST=GetMap&CRS=CRS:84&BBOX=35.351833,32.378106,35.623654,32.577368&LAYERS=B03&WIDTH=512&HEIGHT=343&FORMAT=image/jpeg&TIME={{date}}"  download="image.jpeg" target="_blank" > 
+         <button type="button" class="button">Band 3</button> 
+    </a> 
+    <a href="https://services.sentinel-hub.com/ogc/wms/fb1d3613-b14b-476d-91f3-b8fcfcadef19?REQUEST=GetMap&CRS=CRS:84&BBOX=35.351833,32.378106,35.623654,32.577368&LAYERS=B04&WIDTH=512&HEIGHT=343&FORMAT=image/jpeg&TIME={{date}}"  download="image.jpeg" target="_blank" > 
+         <button type="button" class="button">Band 4</button> 
+    </a> 
+    <a href="https://services.sentinel-hub.com/ogc/wms/fb1d3613-b14b-476d-91f3-b8fcfcadef19?REQUEST=GetMap&CRS=CRS:84&BBOX=35.351833,32.378106,35.623654,32.577368&LAYERS=B05&WIDTH=512&HEIGHT=343&FORMAT=image/jpeg&TIME={{date}}"  download="image.jpeg" target="_blank" > 
+         <button type="button" class="button">Band 5</button> 
+    </a> 
+    <a href="https://services.sentinel-hub.com/ogc/wms/fb1d3613-b14b-476d-91f3-b8fcfcadef19?REQUEST=GetMap&CRS=CRS:84&BBOX=35.351833,32.378106,35.623654,32.577368&LAYERS=B06&WIDTH=512&HEIGHT=343&FORMAT=image/jpeg&TIME={{date}}"  download="image.jpeg" target="_blank" > 
+         <button type="button" class="button">Band 6</button> 
+    </a> 
+    <a href="https://services.sentinel-hub.com/ogc/wms/fb1d3613-b14b-476d-91f3-b8fcfcadef19?REQUEST=GetMap&CRS=CRS:84&BBOX=35.351833,32.378106,35.623654,32.577368&LAYERS=B07&WIDTH=512&HEIGHT=343&FORMAT=image/jpeg&TIME={{date}}"  download="image.jpeg" target="_blank" > 
+         <button type="button" class="button" >Band 7</button> 
+    </a> 
+    <a href="https://services.sentinel-hub.com/ogc/wms/fb1d3613-b14b-476d-91f3-b8fcfcadef19?REQUEST=GetMap&CRS=CRS:84&BBOX=35.351833,32.378106,35.623654,32.577368&LAYERS=B08&WIDTH=512&HEIGHT=343&FORMAT=image/jpeg&TIME={{date}}"  download="image.jpeg" target="_blank" > 
+         <button type="button" class="button">Band 8</button> 
+    </a> 
+    <a href="https://services.sentinel-hub.com/ogc/wms/fb1d3613-b14b-476d-91f3-b8fcfcadef19?REQUEST=GetMap&CRS=CRS:84&BBOX=35.351833,32.378106,35.623654,32.577368&LAYERS=B09&WIDTH=512&HEIGHT=343&FORMAT=image/jpeg&TIME={{date}}"  download="image.jpeg" target="_blank" > 
+         <button type="button" class="button">Band 9</button> 
+    </a> 
+    <a href="https://services.sentinel-hub.com/ogc/wms/fb1d3613-b14b-476d-91f3-b8fcfcadef19?REQUEST=GetMap&CRS=CRS:84&BBOX=35.351833,32.378106,35.623654,32.577368&LAYERS=B10&WIDTH=512&HEIGHT=343&FORMAT=image/jpeg&TIME={{date}}"  download="image.jpeg" target="_blank" > 
+         <button type="button" class="button">Band 10</button> 
+    </a> 
+    <a href="https://services.sentinel-hub.com/ogc/wms/fb1d3613-b14b-476d-91f3-b8fcfcadef19?REQUEST=GetMap&CRS=CRS:84&BBOX=35.351833,32.378106,35.623654,32.577368&LAYERS=B11&WIDTH=512&HEIGHT=343&FORMAT=image/jpeg&TIME={{date}}"  download="image.jpeg" target="_blank" > 
+         <button type="button" class="button">Band 11</button> 
+    </a> 
+    <a href="https://services.sentinel-hub.com/ogc/wms/fb1d3613-b14b-476d-91f3-b8fcfcadef19?REQUEST=GetMap&CRS=CRS:84&BBOX=35.351833,32.378106,35.623654,32.577368&LAYERS=B12&WIDTH=512&HEIGHT=343&FORMAT=image/jpeg&TIME={{date}}"  download="image.jpeg" target="_blank" > 
+         <button type="button" class="button" >Band 12</button> 
+    </a> 
+    <a href="https://services.sentinel-hub.com/ogc/wms/fb1d3613-b14b-476d-91f3-b8fcfcadef19?REQUEST=GetMap&CRS=CRS:84&BBOX=35.351833,32.378106,35.623654,32.577368&LAYERS=B8A&WIDTH=512&HEIGHT=343&FORMAT=image/jpeg&TIME={{date}}"  download="image.jpeg" target="_blank" > 
+         <button type="button" class="button">Band B8A</button> 
+    </a> 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+    </div>
+    {% leaflet_map "yourmap" callback="window.map_init_basic" %}
+    
+</body>
+
+
+<script>
+    function map_init_basic (map, options) {
+
+      
+
+// Sentinel Hub WMS service
+// tiles generated using EPSG:3857 projection - Leaflet takes care of that
+let baseUrl = "https://services.sentinel-hub.com/ogc/wms/fb1d3613-b14b-476d-91f3-b8fcfcadef19";
+let True_color = L.tileLayer.wms(baseUrl, {
+  
+    attribution: '&copy; <a href="http://www.sentinel-hub.com/" target="_blank">Sentinel Hub</a>',
+    	 	 
+ 	 	 	 	
+ 	 	 	 	preset:"1_TRUE_COLOR", 
+ 	 	 	 	layers:"1_TRUE_COLOR", 
+ 	 	 	 	time:"{{date}}", 
+                crs: L.CRS.EPSG4326,
+                format: 'image/jpeg',
+            
+                
+
+
+});
+
+let ndvi = L.tileLayer.wms(baseUrl, {
+  
+    attribution: '&copy; <a href="http://www.sentinel-hub.com/" target="_blank">Sentinel Hub</a>',
+    	 	 
+ 	 	 	 	
+ 	 	 	 	preset:"NDVI", 
+ 	 	 	 	layers:"NDVI", 
+ 	 	 	 	time:"{{date}}", 
+                crs: L.CRS.EPSG4326,
+                format: 'image/jpeg',
+            
+                
+
+
+});
+let false_color_infrared = L.tileLayer.wms(baseUrl, {
+  
+    attribution: '&copy; <a href="http://www.sentinel-hub.com/" target="_blank">Sentinel Hub</a>',
+    	 	 
+ 	 	 	 	
+ 	 	 	 	preset:"2_FALSE_COLOR",
+ 	 	 	 	layers:"2_FALSE_COLOR", 
+ 	 	 	 	time:"{{date}}", 
+                crs: L.CRS.EPSG4326,
+                format: 'image/jpeg',
+            
+                
+
+
+});
+
+let Band_1 = L.tileLayer.wms(baseUrl, {
+  
+    attribution: '&copy; <a href="http://www.sentinel-hub.com/" target="_blank">Sentinel Hub</a>',
+    	 	 
+ 	 	 	 	
+ 	 	 	 	preset:"B01",
+ 	 	 	 	layers:"B01", 
+ 	 	 	 	time:"{{date}}", 
+                crs: L.CRS.EPSG4326,
+                format: 'image/jpeg',
+            
+                
+
+
+});
+
+let Band_2 = L.tileLayer.wms(baseUrl, {
+  
+    attribution: '&copy; <a href="http://www.sentinel-hub.com/" target="_blank">Sentinel Hub</a>',
+    	 	 
+ 	 	 	 	
+ 	 	 	 	preset:"B02",
+ 	 	 	 	layers:"B02", 
+ 	 	 	 	time:"{{date}}", 
+                crs: L.CRS.EPSG4326,
+                format: 'image/jpeg',
+            
+                
+
+
+});
+
+let Band_3 = L.tileLayer.wms(baseUrl, {
+  
+    attribution: '&copy; <a href="http://www.sentinel-hub.com/" target="_blank">Sentinel Hub</a>',
+    	 	 
+ 	 	 	 	
+ 	 	 	 	preset:"B03",
+ 	 	 	 	layers:"B03", 
+ 	 	 	 	time:"{{date}}", 
+                crs: L.CRS.EPSG4326,
+                format: 'image/jpeg',
+            
+                
+
+
+});
+
+let Band_4 = L.tileLayer.wms(baseUrl, {
+  
+    attribution: '&copy; <a href="http://www.sentinel-hub.com/" target="_blank">Sentinel Hub</a>',
+    	 	 
+ 	 	 	 	
+ 	 	 	 	preset:"B04",
+ 	 	 	 	layers:"B04", 
+ 	 	 	 	time:"{{date}}", 
+                crs: L.CRS.EPSG4326,
+                format: 'image/jpeg',
+            
+                
+
+
+});
+
+let Band_5 = L.tileLayer.wms(baseUrl, {
+  
+    attribution: '&copy; <a href="http://www.sentinel-hub.com/" target="_blank">Sentinel Hub</a>',
+    	 	 
+ 	 	 	 	
+ 	 	 	 	preset:"B05",
+ 	 	 	 	layers:"B05", 
+ 	 	 	 	time:"{{date}}", 
+                crs: L.CRS.EPSG4326,
+                format: 'image/jpeg',
+            
+                
+
+
+});
+
+let Band_6 = L.tileLayer.wms(baseUrl, {
+  
+    attribution: '&copy; <a href="http://www.sentinel-hub.com/" target="_blank">Sentinel Hub</a>',
+    	 	 
+ 	 	 	 	
+ 	 	 	 	preset:"B06",
+ 	 	 	 	layers:"B06", 
+ 	 	 	 	time:"{{date}}", 
+                crs: L.CRS.EPSG4326,
+                format: 'image/jpeg',
+            
+                
+
+
+});
+
+let Band_7= L.tileLayer.wms(baseUrl, {
+  
+    attribution: '&copy; <a href="http://www.sentinel-hub.com/" target="_blank">Sentinel Hub</a>',
+    	 	 
+ 	 	 	 	
+ 	 	 	 	preset:"B07",
+ 	 	 	 	layers:"B07", 
+ 	 	 	 	time:"{{date}}", 
+                crs: L.CRS.EPSG4326,
+                format: 'image/jpeg',
+            
+                
+
+
+});
+
+let Band_8 = L.tileLayer.wms(baseUrl, {
+  
+    attribution: '&copy; <a href="http://www.sentinel-hub.com/" target="_blank">Sentinel Hub</a>',
+    	 	 
+ 	 	 	 	
+ 	 	 	 	preset:"B08",
+ 	 	 	 	layers:"B08", 
+ 	 	 	 	time:"{{date}}", 
+                crs: L.CRS.EPSG4326,
+                format: 'image/jpeg',
+            
+                
+
+
+});
+
+let Band_9 = L.tileLayer.wms(baseUrl, {
+  
+    attribution: '&copy; <a href="http://www.sentinel-hub.com/" target="_blank">Sentinel Hub</a>',
+    	 	 
+ 	 	 	 	
+ 	 	 	 	preset:"B09",
+ 	 	 	 	layers:"B09", 
+ 	 	 	 	time:"{{date}}", 
+                crs: L.CRS.EPSG4326,
+                format: 'image/jpeg',
+            
+                
+
+
+});
+
+let Band_10 = L.tileLayer.wms(baseUrl, {
+  
+    attribution: '&copy; <a href="http://www.sentinel-hub.com/" target="_blank">Sentinel Hub</a>',
+    	 	 
+ 	 	 	 	
+ 	 	 	 	preset:"B10",
+ 	 	 	 	layers:"B10", 
+ 	 	 	 	time:"{{date}}", 
+                crs: L.CRS.EPSG4326,
+                format: 'image/jpeg',
+            
+                
+
+
+});
+
+let Band_11 = L.tileLayer.wms(baseUrl, {
+  
+    attribution: '&copy; <a href="http://www.sentinel-hub.com/" target="_blank">Sentinel Hub</a>',
+    	 	 
+ 	 	 	 	
+ 	 	 	 	preset:"B11",
+ 	 	 	 	layers:"B11", 
+ 	 	 	 	time:"{{date}}", 
+                crs: L.CRS.EPSG4326,
+                format: 'image/jpeg',
+            
+                
+
+
+});
+
+let Band_12= L.tileLayer.wms(baseUrl, {
+  
+    attribution: '&copy; <a href="http://www.sentinel-hub.com/" target="_blank">Sentinel Hub</a>',
+    	 	 
+ 	 	 	 	
+ 	 	 	 	preset:"B12",
+ 	 	 	 	layers:"B12", 
+ 	 	 	 	time:"{{date}}", 
+                crs: L.CRS.EPSG4326,
+                format: 'image/jpeg',
+            
+                
+
+
+});
+
+let Band_8A = L.tileLayer.wms(baseUrl, {
+  
+    attribution: '&copy; <a href="http://www.sentinel-hub.com/" target="_blank">Sentinel Hub</a>',
+    	 	 
+ 	 	 	 	
+ 	 	 	 	preset:"B8A",
+ 	 	 	 	layers:"B8A", 
+ 	 	 	 	time:"{{date}}", 
+                crs: L.CRS.EPSG4326,
+                format: 'image/jpeg',
+            
+                
+
+
+});
+
+
+
+let overlayMaps = {
+    'True color': True_color,
+    "NDVI":ndvi,
+    "INFRARED":false_color_infrared,
+    "Band 1":Band_1,
+    "Band 2":Band_2,
+    "Band 3":Band_3,
+    "Band 4":Band_4,
+    "Band 5":Band_5,
+    "Band 6":Band_6,
+    "Band 7":Band_7,
+    "Band 8":Band_8,
+    "Band 9":Band_9,
+    "Band 10":Band_10,
+    "Band 11":Band_11,
+    "Band 12":Band_12,
+    "Band 8A":Band_8A,
+
+}
+
+
+
+        
+     
+       var marker = L.marker([32.4671781889762, 35.48612187073221]).addTo(map);
+       var popup = marker.bindPopup("<b style='color:blue'>Khavat Eden<br /> This is the Study Area :{{date}}</b>");
+       popup.openPopup();
+
+    
+       L.control.layers( overlayMaps).addTo(map);
+       
+       
+    }
+
+
+
+
+</script>
